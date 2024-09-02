@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  
+}
+
+/* Oculta el scrollbar por defecto */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho del scrollbar */
+  height: 10px; /* Altura del scrollbar */
+}
+
+/* Personaliza el scrollbar thumb (parte desplazable) */
+::-webkit-scrollbar-thumb {
+  background-color: #246dc0; /* Color café */
+  border-radius: 10px; /* Redondea las esquinas */
+}
+
+/* Personaliza el scrollbar track (parte no desplazable) */
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Fondo transparente */
+}
+
+/* Estiliza las esquinas del scrollbar thumb */
+/* Puedes ajustar el radio para cambiar la forma del scrollbar */
+/* Utiliza números más grandes para hacer las esquinas más redondas */
+/* En este ejemplo, el scrollbar thumb tendrá esquinas ovaladas */
+::-webkit-scrollbar-thumb:horizontal {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Estiliza las esquinas del scrollbar track */
+/* En este ejemplo, las esquinas del scrollbar track estarán ocultas */
+/* Puedes ajustar esto según tus necesidades */
+::-webkit-scrollbar-track:horizontal {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body{
+  background-color: #fcfaee;
+}
+
+.oppCard{
+
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
