@@ -6,34 +6,33 @@ export default function AuthCard({children, title, description, urlFooter, urlLi
     
 
     return (
-        <section className="w-screen h-screen flex justify-center items-center">
-            <Card className="max-w-[400px] md:min-w-[700px] shadow-xl">
-                <CardHeader className="flex gap-3">
+        <section className="w-screen h-screen flex justify-center lg:justify-end items-center">
+            <Card className=" w-[calc(100%-40px)] sm:w-[70%] lg:w-[40%] lg:h-full shadow-xl lg:rounded-none">
+                
+                
+                <CardBody className="p-5 flex justify-center items-center gap-5">
+                    <h1 className="text-lg font-bold text-primary">{title}</h1>
+
                     <Image
                         alt="nextui logo"
-                        height={40}
+                        height={100}
                         radius="sm"
                         src="/imgs/innminds.jpeg"
-                        width={40}
+                        width={100}
                     />
-                    <div className="flex flex-col text-start">
-                        <p className="text-md">{title}</p>
+                     <div className="flex flex-col text-start">
                         <p className="text-small text-default-500">{description}</p>
                     </div>
-                </CardHeader>
-                <Divider />
-                <CardBody className="p-5">
                     {children}
-                </CardBody>
-                <Divider />
-                <CardFooter>
                     <Link
-                        showAnchorIcon
+                        // showAnchorIcon
                         href={urlLink}
                     >
                         {urlFooter}
                     </Link>
-                </CardFooter>
+                </CardBody>
+             
+                
             </Card>
         </section>
     )

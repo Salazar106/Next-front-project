@@ -11,7 +11,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'primary': ' #002E62', // Replace with your exact hex code
+        'primary'  : '#002E62',
+        'secondary': '#4A4B1F',
+        'warning'  : '#F69E09',
+        'error'    : '#540101',
+        'light'    : '#BDBEBF',
+        'orange'   : '#E32D12'
       },
     },
   },
