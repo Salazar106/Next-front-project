@@ -7,11 +7,10 @@ export default function AuthCard({children, title, description, urlFooter, urlLi
 
     return (
         <section className="w-screen h-screen flex justify-center lg:justify-end items-center">
-            <Card className=" w-[calc(100%-40px)] sm:w-[70%] lg:w-[40%] lg:h-full shadow-xl lg:rounded-none">
+            <Card className=" w-[calc(100%-40px)] sm:w-[70%] lg:w-[40%] lg:h-full shadow-xl lg:rounded-none bg-slate-200">
                 
                 
                 <CardBody className="p-5 flex justify-center items-center gap-5">
-                    <h1 className="text-lg font-bold text-primary">{title}</h1>
 
                     <Image
                         alt="nextui logo"
@@ -20,6 +19,7 @@ export default function AuthCard({children, title, description, urlFooter, urlLi
                         src="/imgs/disruptiveLogo.png"
                         width={100}
                     />
+                    <h1 className="text-2xl font-bold text-secondary">{title}</h1>
                      <div className="flex flex-col text-start">
                         <p className="text-small text-default-500">{description}</p>
                     </div>

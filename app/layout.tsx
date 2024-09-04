@@ -4,14 +4,13 @@ import "../public/globals.css";
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import ConfigureAmplifyClientSide from "./amplify-cognito-config";
 import SessionProvider from './providers'
 import { getServerSession } from "next-auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ERP_INNMINDS",
+  title: "Human Gestion",
   description: "my firts erp",
 };
 

@@ -7,7 +7,7 @@ export default function TableActionButtons({id}: any) {
     return (
         <div className="flex items-center gap-2 w-full">
             
-            <Modals title={<FaPen />} size="5xl" isIcon={true}  text="Edit">
+            <Modals title={<FaPen />} size="5xl" isIcon={true}  text="Edit" btnColor="primary">
                 <p>aqui va para editar</p>
             </Modals>
 

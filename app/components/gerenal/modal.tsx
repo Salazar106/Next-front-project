@@ -2,7 +2,9 @@
 import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Tooltip } from "@nextui-org/react";
 
-export default function Modals({ title, children, size, btnColor, isIcon, text }: any) {
+
+
+export default function Modals({ title, children, size, btnColor, isIcon, text,  }: any) {
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -21,11 +23,11 @@ export default function Modals({ title, children, size, btnColor, isIcon, text }
         scrollBehavior='inside'
         size={size || '2xl'}
         classNames={{
-          body: "py-6",
+          body: "py-1",
           backdrop: "bg-[#292f46]/50 backdrop-opacity-40 ",
-          base: "border-[#292f46] bg-gray-200 dark:bg-[#19172c] text-primary",
-          header: "border-b-[1px] border-primary",
-          footer: "border-t-[1px] border-primary",
+          base: "border-[#292f46] bg-white  text-slate-600",
+          header: "border-b-[1px] border-slate-400 ",
+          footer: "border-t-[1px] border-slate-400",
           closeButton: "hover:bg-white/5 active:bg-white/10",
         }}
       >
@@ -33,13 +35,13 @@ export default function Modals({ title, children, size, btnColor, isIcon, text }
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Preview
+                {title}
               </ModalHeader>
               <ModalBody>
                 {children}
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+                <Button color="danger"  onPress={onClose}>
                   Close
                 </Button>
               </ModalFooter>

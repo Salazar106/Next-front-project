@@ -49,7 +49,7 @@ export default function RecoverPasswordForm() {
                         <div className="flex flex-col h-14">
                             <div className="flex md:w-full ">
                                 <span 
-                                    className="inline-flex items-center px-2 text-lg text-gray-900 cursor-pointer bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600"
+                                    className="inline-flex items-center px-2 text-lg text-white cursor-pointer bg-orange border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600"
                                     onClick={toggleShowPassword}>
                                     {showPassword ? <FaLockOpen />:<FaLock />} 
                                 </span>
@@ -62,12 +62,12 @@ export default function RecoverPasswordForm() {
                                     maxLength="64" 
                                 />
                             </div>
-                            <ErrorMessage name="password" className="text-red-600 font-semibold" component='span' />
+                            <ErrorMessage name="password" className="text-danger font-semibold" component='span' />
                         </div>
                         <div className="flex flex-col h-14">
                             <div className="flex md:w-full ">
                                 <span 
-                                    className="inline-flex items-center px-2 text-lg text-gray-900 cursor-pointer bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600"
+                                    className="inline-flex items-center px-2 text-lg text-white cursor-pointer bg-orange border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600"
                                     onClick={toggleShowPassword}>
                                     {showPassword ? <FaLockOpen />:<FaLock />} 
                                 </span>
@@ -80,10 +80,10 @@ export default function RecoverPasswordForm() {
                                     maxLength="64" 
                                 />
                             </div>
-                            <ErrorMessage name="confirmPassword" className="text-red-600 font-semibold" component='span' />
+                            <ErrorMessage name="confirmPassword" className="text-danger font-semibold" component='span' />
                         </div>
                         <div className="flex w-full justify-end">
-                            <Button type="submit" size="md" className="w-full mt-6">Update your password</Button>
+                            <Button type="submit" size="md" className="w-full mt-6 bg-primary text-white">Update your password</Button>
                         </div>
                     </div>
             </Form>

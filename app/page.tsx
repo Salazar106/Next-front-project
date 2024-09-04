@@ -15,7 +15,7 @@ export default function LoginPage() {
     return (
       
         <AuthCard
-          title='Sing In'
+          title='SING IN'
           description='Set your detail to login'
           urlFooter='Sing Up'
           urlLink='/auth/sing-up'

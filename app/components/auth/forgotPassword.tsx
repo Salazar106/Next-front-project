@@ -32,7 +32,7 @@ export default function ForgotPasswordForm() {
                         <div className="w-full  flex flex-col justify-center gap-3">
                             <div className='flex flex-col h-14'>
                                 <div className="flex md:w-full ">
-                                    <span className="inline-flex items-center px-2 text-lg text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600">
+                                    <span className="inline-flex items-center px-2 text-lg text-white bg-orange border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600">
                                         <IoIosMail />
                                     </span>
                                     <Field 
@@ -43,10 +43,10 @@ export default function ForgotPasswordForm() {
                                         placeholder="Email" 
                                         maxLength="255" /><br />
                                 </div>
-                                <ErrorMessage name="email" className="text-red-600 font-semibold" component='span' />
+                                <ErrorMessage name="email" className="text-danger font-semibold" component='span' />
                             </div>
                             <div className="flex w-full justify-end">
-                                <Button type="submit" size="md" className="w-full mt-6">Send Email</Button>
+                                <Button type="submit" size="md" className="w-full mt-6 bg-primary text-white">Send Email</Button>
                             </div>
                         </div>
                 </Form>

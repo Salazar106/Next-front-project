@@ -20,9 +20,6 @@ const initialValues: LoginFormValues = {
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string().required('Password is required')
-        .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-        .matches(/[0-9]/, 'Password must contain at least one number')
-        .matches(/[\W_]/, 'Password must contain at least one special character')
 });
 
 export default function LoginForm() {
@@ -34,7 +31,7 @@ export default function LoginForm() {
     };
 
     const handleSubmit = async (
-        values: LoginFormValues,
+        // values: LoginFormValues,
     ) => {
         location.replace('/dashboard');
 
@@ -51,7 +48,7 @@ export default function LoginForm() {
                 <div className="w-full flex flex-col justify-center gap-3">
                     <div className='flex flex-col h-14'>
                         <div className="flex md:w-full ">
-                            <span className="inline-flex items-center px-2 text-lg text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600">
+                            <span className="inline-flex items-center px-2 text-lg text-white bg-orange border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600">
                                 <IoIosMail />
                             </span>
                             <Field
@@ -63,13 +60,13 @@ export default function LoginForm() {
                                 maxLength="255"
                             /><br />
                         </div>
-                        <ErrorMessage name="email" className="text-red-600 font-semibold" component='span' />
+                        <ErrorMessage name="email" className="text-danger text-sm font-semibold" component='span' />
                     </div>
 
                     <div className="flex flex-col h-14">
                         <div className="flex md:w-full ">
                             <span
-                                className="inline-flex items-center px-2 text-lg text-gray-900 cursor-pointer bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600"
+                                className="inline-flex items-center px-2 text-lg text-white cursor-pointer bg-orange border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-my-gray dark:text-black dark:border-gray-600"
                                 onClick={toggleShowPassword}>
                                 {showPassword ? <FaLockOpen /> : <FaLock />}
                             </span>
@@ -82,14 +79,14 @@ export default function LoginForm() {
                                 maxLength="64"
                             />
                         </div>
-                        <ErrorMessage name="password" className="text-red-600 font-semibold" component='span' />
+                        <ErrorMessage name="password" className="text-danger text-sm font-semibold" component='span' />
                     </div>
                     <div className='flex flex-col gap-2 items-start'>
                         <Checkbox>remember me</Checkbox>
-                        <Link href="/auth/forgot-password">Forgot your Password?</Link>
+                        <Link className="text-primary" href="/auth/forgot-password">Forgot your Password?</Link>
                     </div>
                     <div className="flex w-full justify-end">
-                        <Button type="submit" size="md" className="w-full mt-6">Sign In</Button>
+                        <Button type="submit" size="md" className="w-full mt-6 bg-primary text-white">Sign In</Button>
                     </div>
                 </div>
                 {errorMessage && (
