@@ -7,13 +7,13 @@ export default function AuthCard({children, title, description, urlFooter, urlLi
 
     return (
         <section className="w-screen h-screen flex justify-center items-center">
-            <Card className="max-w-[400px] md:min-w-[700px] shadow-xl">
+            <Card className="max-w-[400px] md:min-w-[700px] shadow-xl bg-slate-300">
                 <CardHeader className="flex gap-3">
                     <Image
                         alt="nextui logo"
                         height={40}
                         radius="sm"
-                        src="/imgs/innminds.jpeg"
+                        src="/imgs/disruptiveLogo.png"
                         width={40}
                     />
                     <div className="flex flex-col text-start">

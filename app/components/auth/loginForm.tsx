@@ -6,8 +6,6 @@ import { useState } from "react";
 import { FaLock, FaLockOpen } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 import * as Yup from 'yup';
-import { handleSignIn } from "@/app/components/lib/auth/cognitoActions";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 interface LoginFormValues {
     email: string;
@@ -30,7 +28,6 @@ const validationSchema = Yup.object().shape({
 export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const { data: session } = useSession();
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -39,19 +36,9 @@ export default function LoginForm() {
     const handleSubmit = async (
         values: LoginFormValues,
     ) => {
-        // console.log(values);
-        const response = await signIn('credentials', {
-            username: values.email,
-            password: values.password,
-            redirect: false
-          });
+        location.replace('/dashboard');
 
-          if (response?.ok) {
-            location.replace('/ERP/dashboard');
-          } else {
-            alert('pailangas')
-            location.replace('/');
-          }
+          
     };
    
     return (
@@ -99,7 +86,7 @@ export default function LoginForm() {
                     </div>
                     <div className='flex flex-col gap-2 items-start'>
                         <Checkbox>remember me</Checkbox>
-                        <Link href="/ERP/auth/forgot-password">Forgot your Password?</Link>
+                        <Link href="/auth/forgot-password">Forgot your Password?</Link>
                     </div>
                     <div className="flex w-full justify-end">
                         <Button type="submit" size="md" className="w-full mt-6">Sign In</Button>

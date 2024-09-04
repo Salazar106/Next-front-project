@@ -18,7 +18,7 @@ export default function LoginPage() {
           title='Sing In'
           description='Set your detail to login'
           urlFooter='Sing Up'
-          urlLink='/ERP/auth/sing-up'
+          urlLink='/auth/sing-up'
         >
           <LoginForm/>
         </AuthCard>
