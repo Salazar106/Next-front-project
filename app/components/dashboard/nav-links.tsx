@@ -21,11 +21,11 @@ export default function NavLinks() {
     <>
       {links.map((link) => {
         return (
-          <Tooltip key={link.name} className='' content={link.name} color="primary" offset={-7}>
+          <Tooltip key={link.name} className='' content={link.name} color="secondary" offset={-7}>
             <Link
               href={link.href}
-              className={`flex h-[48px] grow  items-center  justify-center gap-2 rounded-md bg-gray-100 p-3 text-sm text-black font-large hover:bg-sky-600 hover:text-white md:flex-none md:justify-center md:p-2 md:px-3
-              ${pathname === link.href ? 'bg-sky-600 text-white shadow-gray-400':''}
+              className={`flex h-[48px] grow  items-center  justify-center gap-2 rounded-md bg-gray-100 p-3 text-sm text-black font-large hover:bg-primary hover:text-white md:flex-none md:justify-center md:p-2 md:px-3
+              ${pathname === link.href ? 'bg-primary text-white shadow-gray-400':''}
               `}
             >
             {link.icon}

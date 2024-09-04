@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FaPowerOff } from "react-icons/fa6";
 import { Tooltip } from '@nextui-org/react';
 import { redirect } from "next/navigation";
+import AvatarComponent from './avatar';
 
 export default function SideNav() {
    const signOut = () => {
@@ -20,13 +21,7 @@ export default function SideNav() {
       <div className="flex grow flex-row justify-between space-x-2 bg-gray-300 md:flex-col md:space-x-0 md:space-y-2 p-2">
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md bg-gray-300 md:block"></div>
-        
-          <Tooltip className='' content='Cerrar Secion' color="danger" offset={-7}>
-            <Link href="/" className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-300 p-3 text-sm font-medium hover:bg-rose-600 hover:text-blue-50 md:flex-none  md:p-2 md:px-3">
-              <FaPowerOff/>
-            </Link>
-          </Tooltip>
-       
+          <AvatarComponent/>
       </div>
     </div>
   );
