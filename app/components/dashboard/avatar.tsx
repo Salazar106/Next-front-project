@@ -10,11 +10,17 @@ import { Link } from '@nextui-org/react';
 import { FaPersonRifle, FaPowerOff } from 'react-icons/fa6';
 
 export default function BasicDemo() {
-    const op = useRef(null);
+    const op = useRef<OverlayPanel>(null); // El tipo OverlayPanel incluye el método `toggle`.
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (op.current) {
+      op.current.toggle(e); // TypeScript sabrá que `op.current` tiene `toggle`
+    }
+  };
 
     return (
         <div className="flex justify-center">
-            <Button type="button"   onClick={(e) => op.current.toggle(e)} >
+            <Button type="button"   onClick={handleClick} >
                 <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png"  size="large" shape="circle" />
                 <p className='font-bold ml-1'>{"»"}</p>
             </Button>
