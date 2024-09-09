@@ -13,6 +13,8 @@ const links = [
   { name: 'Dashboard',   href: '/dashboard',       icon: <FaChartSimple/> },
   { name: 'Users',       href: '/dashboard/users', icon: <FaUserDoctor  />},
   { name: 'Clients',     href: '/dashboard/clients', icon: <FaUsers/> },
+  { name: 'Clients',     href: '/dashboard/clients', icon: <FaUsers/> },
+  { name: 'Roles',     href: '/dashboard/rols', icon: <FaUsers/> },
 ];
 
 export default function NavLinks() {

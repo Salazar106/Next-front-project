@@ -13,9 +13,9 @@ export default function SideNav() {
 
   return (
     <div className="flex h-full flex-col  ">
-      <Link className="flex h-20 items-center justify-center bg-primary shadow-lg p-4 md:h-40" href="/ERP/dashboard">
+      <Link className="flex h-20 items-center justify-center bg-white shadow-lg p-4 md:h-40" href="/dashboard">
         <div className="w-25 text-white items-center md:w-40">
-          <Image className='justify-center' width={150} height={ 150} src={'/favicon1.ico'} alt={'hola'} />
+          <Image className='justify-center' width={150} height={ 150} src={'/favicon.ico'} alt={'hola'} />
         </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 bg-gray-300 md:flex-col md:space-x-0 md:space-y-2 p-2">

@@ -14,7 +14,7 @@ const config: Config = {
         'primary'  : '#002E62',
         'secondary': '#4A4B1F',
         'warning'  : '#F69E09',
-        'danger'    : '#540101',
+        'danger'   : '#540101',
         'light'    : '#BDBEBF',
         'orange'   : '#E32D12'
       },

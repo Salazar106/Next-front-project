@@ -5,7 +5,7 @@ import Modals from "@/app/components/gerenal/modal";
 
 export default function TableActionButtons({id}: any) {
     return (
-        <div className="flex items-center gap-2 w-full">
+        <div className="flex items-center gap-2 w-[calc(100%-20px)]">
             
             <Modals title={<FaPen />} size="5xl" isIcon={true}  text="Edit" btnColor="primary">
                 <p>aqui va para editar</p>
