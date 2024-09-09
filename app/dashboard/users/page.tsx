@@ -2,7 +2,6 @@
 
 import UserForm from "@/app/components/dashboard/users/userForm";
 import Modals from "@/app/components/gerenal/modal";
-import TableData from "@/app/components/gerenal/table/table";
 import { userColumns, userData } from "@/app/components/lib/user";
 
 export default function UsersPage() {
@@ -14,7 +13,7 @@ export default function UsersPage() {
                     <UserForm/>
                 </Modals>
             </div>
-            <TableData TableData={userData} columns={userColumns}/>
+            {/* <TableData TableData={userData} columns={userColumns}/> */}
         </section>
     )
 }
