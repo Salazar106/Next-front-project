@@ -1,5 +1,6 @@
-import React from "react";
-const columns = [
+
+
+export const columns = [
   {name: "ID", uid: "id", sortable: true},
   {name: "NAME", uid: "name", sortable: true},
   {name: "AGE", uid: "age", sortable: true},
@@ -75,7 +76,7 @@ const users = [
     age: "29",
     avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
     email: "brian.kim@example.com",
-    status: "active",
+    status: "Active",
   },
   {
     id: 7,
@@ -219,4 +220,4 @@ const users = [
   },
 ];
 
-export {columns, users, statusOptions};
+export { users, statusOptions};

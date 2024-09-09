@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import {
   Table,
@@ -15,13 +16,16 @@ import {
   Chip,
   User,
   Pagination,
+  Selection,
+  ChipProps,
+  SortDescriptor
 } from "@nextui-org/react";
-import {VerticalDotsIcon, ChevronDownIcon, SearchIcon,PlusIcon} from "./icons";
-import {columns, users, statusOptions} from "./data";
+import {VerticalDotsIcon, PlusIcon, SearchIcon, ChevronDownIcon} from "./icons";
+// import {columns, users, statusOptions} from "./data";
 import {capitalize} from "./utils";
-import TableActionButtons from "../../gerenal/table/tableActionButtons";
+import TableActionButtons from "./tableActionButtons";
 
-const statusColorMap = {
+const statusColorMap: Record<string, ChipProps["color"]> = {
   active: "success",
   paused: "danger",
   vacation: "warning",
@@ -29,16 +33,23 @@ const statusColorMap = {
 
 const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
 
-export default function NextUITable() {
+// type User = typeof users[0];
+
+export default function TableUi({columns, data, statusOptions, children}:any ) {
+
+type Data = typeof data[0];
+
+
   const [filterValue, setFilterValue] = React.useState("");
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
-  const [visibleColumns, setVisibleColumns] = React.useState(new Set(INITIAL_VISIBLE_COLUMNS));
-  const [statusFilter, setStatusFilter] = React.useState("all");
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set([]));
+  const [visibleColumns, setVisibleColumns] = React.useState<Selection>(new Set(INITIAL_VISIBLE_COLUMNS));
+  const [statusFilter, setStatusFilter] = React.useState<Selection>("all");
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [sortDescriptor, setSortDescriptor] = React.useState({
+  const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
     column: "age",
     direction: "ascending",
   });
+
   const [page, setPage] = React.useState(1);
 
   const hasSearchFilter = Boolean(filterValue);
@@ -46,11 +57,11 @@ export default function NextUITable() {
   const headerColumns = React.useMemo(() => {
     if (visibleColumns === "all") return columns;
 
-    return columns.filter((column) => Array.from(visibleColumns).includes(column.uid));
+    return columns.filter((column:any) => Array.from(visibleColumns).includes(column.uid));
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredUsers = [...users];
+    let filteredUsers = [...data];
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
@@ -64,7 +75,7 @@ export default function NextUITable() {
     }
 
     return filteredUsers;
-  }, [users, filterValue, statusFilter]);
+  }, [data, filterValue, statusFilter]);
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -76,17 +87,17 @@ export default function NextUITable() {
   }, [page, filteredItems, rowsPerPage]);
 
   const sortedItems = React.useMemo(() => {
-    return [...items].sort((a, b) => {
-      const first = a[sortDescriptor.column];
-      const second = b[sortDescriptor.column];
+    return [...items].sort((a: Data, b: Data) => {
+      const first = a[sortDescriptor.column as keyof Data] as number;
+      const second = b[sortDescriptor.column as keyof Data] as number;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === "descending" ? -cmp : cmp;
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback((user, columnKey) => {
-    const cellValue = user[columnKey];
+  const renderCell = React.useCallback((user: Data, columnKey: React.Key) => {
+    const cellValue = user[columnKey as keyof Data];
 
     switch (columnKey) {
       case "name":
@@ -114,19 +125,31 @@ export default function NextUITable() {
         );
       case "actions":
         return (
-          <TableActionButtons/>
+            <TableActionButtons id={data.id}/>
         );
       default:
         return cellValue;
     }
   }, []);
 
-  const onRowsPerPageChange = React.useCallback((e) => {
+  const onNextPage = React.useCallback(() => {
+    if (page < pages) {
+      setPage(page + 1);
+    }
+  }, [page, pages]);
+
+  const onPreviousPage = React.useCallback(() => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  }, [page]);
+
+  const onRowsPerPageChange = React.useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setRowsPerPage(Number(e.target.value));
     setPage(1);
   }, []);
 
-  const onSearchChange = React.useCallback((value) => {
+  const onSearchChange = React.useCallback((value?: string) => {
     if (value) {
       setFilterValue(value);
       setPage(1);
@@ -168,7 +191,7 @@ export default function NextUITable() {
                 selectionMode="multiple"
                 onSelectionChange={setStatusFilter}
               >
-                {statusOptions.map((status) => (
+                {statusOptions.map((status:any) => (
                   <DropdownItem key={status.uid} className="capitalize">
                     {capitalize(status.name)}
                   </DropdownItem>
@@ -189,20 +212,21 @@ export default function NextUITable() {
                 selectionMode="multiple"
                 onSelectionChange={setVisibleColumns}
               >
-                {columns.map((column) => (
+                {columns.map((column:any) => (
                   <DropdownItem key={column.uid} className="capitalize">
                     {capitalize(column.name)}
                   </DropdownItem>
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" endContent={'+'}>
-              Add New
-            </Button>
+            {/* <Button color="primary" endContent={<PlusIcon />}>
+              {BtnName}
+            </Button> */}
+            {children}
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-default-400 text-small">Total {users.length} users</span>
+          <span className="text-default-400 text-small">Total {data.length} Rows</span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
             <select
@@ -221,9 +245,9 @@ export default function NextUITable() {
     filterValue,
     statusFilter,
     visibleColumns,
-    onRowsPerPageChange,
-    users.length,
     onSearchChange,
+    onRowsPerPageChange,
+    data.length,
     hasSearchFilter,
   ]);
 
@@ -239,6 +263,7 @@ export default function NextUITable() {
           total={pages}
           onChange={setPage}
         />
+
       </div>
     );
   }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
@@ -248,12 +273,12 @@ export default function NextUITable() {
       aria-label="Example table with custom cells, pagination and sorting"
       isHeaderSticky
       bottomContent={bottomContent}
-      selectionBehavior="replace"
       bottomContentPlacement="outside"
       classNames={{
         wrapper: "max-h-[382px]",
       }}
       selectedKeys={selectedKeys}
+      selectionBehavior="replace"
       selectionMode="multiple"
       sortDescriptor={sortDescriptor}
       topContent={topContent}
@@ -262,7 +287,7 @@ export default function NextUITable() {
       onSortChange={setSortDescriptor}
     >
       <TableHeader columns={headerColumns}>
-        {(column) => (
+        {(column:any) => (
           <TableColumn
             key={column.uid}
             align={column.uid === "actions" ? "center" : "start"}
