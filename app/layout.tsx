@@ -4,7 +4,6 @@ import "../public/globals.css";
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import SessionProvider from './providers'
 import { getServerSession } from "next-auth";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,10 +23,7 @@ export default async function RootLayout ({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        {/* <ConfigureAmplifyClientSide /> */}
-        <SessionProvider session={session}>
           {children}
-        </SessionProvider>
       </body>
     </html>
   );
