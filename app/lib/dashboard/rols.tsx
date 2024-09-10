@@ -1,3 +1,42 @@
+"use client"
+import React from "react";
+
+
+// export const renderCell = React.useCallback((user: Data, columnKey: React.Key) => {
+//   const cellValue = user[columnKey as keyof Data];
+
+//   switch (columnKey) {
+//     case "name":
+//       return (
+        
+//         <div className="flex flex-col ">
+          
+//           {user.email}
+//         </div>
+//       );
+//     case "role":
+//       return (
+//         <div className="flex flex-col">
+//           <p className="text-bold text-small capitalize">{cellValue}</p>
+//           <p className="text-bold text-tiny capitalize text-default-400">{user.team}</p>
+//         </div>
+//       );
+//     case "status":
+//       return (
+//         <Chip className="capitalize" color={statusColorMap[user.status]} size="sm" variant="flat">
+//           {cellValue}
+//         </Chip>
+//       );
+//     case "actions":
+//       return (
+//           <TableActionButtons id={data.id}/>
+//       );
+//     default:
+//       return cellValue;
+//   }
+// }, []);
+
+
 export const columns = [
     {name: "ID", uid: "id", sortable: true},
     {name: "NAME", uid: "name", sortable: true},
@@ -6,8 +45,6 @@ export const columns = [
     {name: "STATUS", uid: "status", sortable: true},
     {name: "ACTIONS", uid: "actions"},
   ];
-  
-
 
   export const statusOptions = [
     {name: "Active", uid: "active"},

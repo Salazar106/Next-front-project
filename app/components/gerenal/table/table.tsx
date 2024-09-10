@@ -21,7 +21,6 @@ import {
   SortDescriptor
 } from "@nextui-org/react";
 import {VerticalDotsIcon, PlusIcon, SearchIcon, ChevronDownIcon} from "./icons";
-// import {columns, users, statusOptions} from "./data";
 import {capitalize} from "./utils";
 import TableActionButtons from "./tableActionButtons";
 
@@ -102,6 +101,7 @@ type Data = typeof data[0];
     switch (columnKey) {
       case "name":
         return (
+          
           <User
             avatarProps={{radius: "lg", src: user.avatar}}
             description={user.email}

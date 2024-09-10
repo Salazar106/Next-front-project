@@ -1,6 +1,6 @@
 //import UsersTable from "@/app/ERP/dashboard/users/";
 
-import UserForm from "@/app/components/dashboard/users/userForm";
+import UserForm from "@/app/components/dashboard/forms/userForm";
 import Modals from "@/app/components/gerenal/modal";
 import { PlusIcon } from "@/app/components/gerenal/table/icons";
 import TableUi from "@/app/components/gerenal/table/table";
