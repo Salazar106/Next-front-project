@@ -12,7 +12,7 @@ interface rol{
     status: boolean;
 }
 
-export const RolFormComponent = () =>{
+export const RolFormComponent = ({data}:any) =>{
 
 
     const validationSchema = Yup.object().shape({
@@ -26,21 +26,27 @@ export const RolFormComponent = () =>{
         
     }
 
+    const values = !data?{
+        name: "" ,
+        department: '',
+        description: '',
+        confirmPassword: '',
+    }:{
+        name: data.name,
+        department: data.Department,
+        description: data.Description,
+    }
+
+
     return (
        <Formik
-            initialValues={{
-                name: '',
-                department: '',
-                description: '',
-                confirmPassword: '',
-            }}
+            initialValues={values}
             validationSchema={validationSchema}
 
             onSubmit={handleSubmit}
         >
             <Form className="w-full p-4 md:px-10">
                 <div className="w-full  flex flex-col justify-center gap-3">
-
                 <div className="flex w-full justify-center h-20 gap-2">
                     <div className='flex flex-col h-14 w-[50%]'>
                         <label >Nombre Rol</label>     
@@ -83,7 +89,7 @@ export const RolFormComponent = () =>{
                     </div>
                    
                     <div className="flex w-full justify-end">
-                        <Button type="submit" size="md" className="w-full mt-6 bg-primary text-white">Submit</Button>
+                        <Button type="submit" size="md" className="w-full mt-6 bg-primary text-white">{data?"Update":"Create New Rol"}</Button>
                     </div>
                 </div>
             </Form>

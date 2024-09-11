@@ -5,7 +5,10 @@ import { useState } from "react";
 import { FaLock, FaLockOpen } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 import * as Yup from 'yup';
-export default function UserForm() {
+
+
+
+export default function UserForm({data}:any) {
     const [showPassword, setShowPassword] = useState(false);
 
     const toggleShowPassword = () => {
@@ -48,6 +51,7 @@ export default function UserForm() {
             onSubmit={handleSubmit}
         >
             <Form className="w-full px-1 md:px-10">
+
                 <div className="w-full  flex flex-col justify-center gap-3">
 
                     <div className='flex flex-col h-14'>

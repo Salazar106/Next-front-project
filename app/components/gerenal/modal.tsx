@@ -4,16 +4,16 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 
 
 
-export default function Modals({ title, children, size, btnColor, isIcon, text,  }: any) {
+export default function Modals({ title, children, size, btnColor, isIcon, text, icon }: any) {
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <div className="flex flex-col gap-2">
-      {isIcon ? (<Tooltip className='' content={text} color={btnColor || "primary"} offset={-7}>
-                    <Button isIconOnly color={btnColor || "primary"} aria-label="Like" onPress={onOpen}>
-                      {title}
-                    </Button>
+      {isIcon ? (<Tooltip className='' content={text} color={btnColor || "primary"} offset={1}>
+                    <button  className={`text-${btnColor} font-bold hover:scale-110 `} aria-label="Like" onClick={onOpen}>
+                      {icon}
+                    </button>
                 </Tooltip>):
                 <Button className={`${btnColor || "bg-primary"} text-white font-bold hover:text-white`} onPress={onOpen}>{title}</Button>
         }
@@ -39,12 +39,13 @@ export default function Modals({ title, children, size, btnColor, isIcon, text, 
               </ModalHeader>
               <ModalBody>
                 {children}
+                <div className="w-full h-4"></div>
               </ModalBody>
-              <ModalFooter>
+              {/* <ModalFooter>
                 <Button color="danger"  onPress={onClose}>
                   Close
                 </Button>
-              </ModalFooter>
+              </ModalFooter> */}
             </>
           )}
         </ModalContent>

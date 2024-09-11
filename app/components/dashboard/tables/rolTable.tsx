@@ -20,22 +20,22 @@ import {
   ChipProps,
   SortDescriptor
 } from "@nextui-org/react";
-import {VerticalDotsIcon, PlusIcon, SearchIcon, ChevronDownIcon} from "./icons";
-import {capitalize} from "./utils";
-import TableActionButtons from "./tableActionButtons";
-import UserForm from "../../dashboard/forms/userForm";
+import {VerticalDotsIcon, PlusIcon, SearchIcon, ChevronDownIcon} from "./../../gerenal/table/icons";
+import {capitalize} from "./../../gerenal/table/utils";
+import { RolFormComponent } from "../forms/rolForm";
+import TableActionButtons from "../../gerenal/table/tableActionButtons";
+// import TableActionButtons from "./tableActionButtons";
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
   active: "success",
-  paused: "danger",
-  vacation: "warning",
+  inactive: "danger",
 };
 
 const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
 
 // type User = typeof users[0];
 
-export default function TableUi({columns, data, statusOptions, children}:any ) {
+export default function RolTable({columns, data, statusOptions, children}:any ) {
 
 type Data = typeof data[0];
 
@@ -96,37 +96,45 @@ type Data = typeof data[0];
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback((user: Data, columnKey: React.Key) => {
-    const cellValue = user[columnKey as keyof Data];
+  const renderCell = React.useCallback((data: Data, columnKey: React.Key) => {
+    const cellValue = data[columnKey as keyof Data];
 
     switch (columnKey) {
       case "name":
         return (
+
+            <div>
+                <p className="text-extrabold text-small capitalize">{cellValue}</p>
+                <p className="text-bold text-tiny capitalize text-default-400">{data.Department}</p>
+
+            </div>
           
-          <User
-            avatarProps={{radius: "lg", src: user.avatar}}
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
+        //   <User
+        //     avatarProps={{radius: "lg", src: data.avatar}}
+        //     description={data.email}
+        //     name={cellValue}
+        //   >
+        //     {data.email}
+        //   </User>
         );
       case "role":
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">{user.team}</p>
+            <p className="text-bold text-tiny capitalize text-default-400">{data.team}</p>
           </div>
         );
       case "status":
         return (
-          <Chip className="capitalize" color={statusColorMap[user.status]} size="sm" variant="flat">
+          <Chip className="capitalize" color={statusColorMap[data.status]} size="sm" variant="flat">
             {cellValue}
           </Chip>
         );
       case "actions":
         return (
-            <TableActionButtons id={data} EditComponent={UserForm} ViewComponent={UserForm}/>
+            <div>
+                <TableActionButtons id={data} EditComponent={RolFormComponent} ViewComponent={RolFormComponent}/>
+            </div>
         );
       default:
         return cellValue;
