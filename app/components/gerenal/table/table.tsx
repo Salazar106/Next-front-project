@@ -256,8 +256,8 @@ type Data = typeof data[0];
     return (
       <div className="py-2 px-2 flex justify-center items-center">
         <Pagination
-          isCompact
-          showControls
+          // isCompact
+          // showControls
           showShadow
           color="primary"
           page={page}
@@ -271,7 +271,6 @@ type Data = typeof data[0];
 
   return (
     <Table
-      aria-label="Example table with custom cells, pagination and sorting"
       isHeaderSticky
       bottomContent={bottomContent}
       bottomContentPlacement="outside"
