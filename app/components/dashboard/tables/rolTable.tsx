@@ -133,25 +133,13 @@ type Data = typeof data[0];
       case "actions":
         return (
             <div>
-                <TableActionButtons id={data} EditComponent={RolFormComponent} ViewComponent={RolFormComponent}/>
+                <TableActionButtons data={data} EditComponent={RolFormComponent} ViewComponent={RolFormComponent}/>
             </div>
         );
       default:
         return cellValue;
     }
   }, []);
-
-  const onNextPage = React.useCallback(() => {
-    if (page < pages) {
-      setPage(page + 1);
-    }
-  }, [page, pages]);
-
-  const onPreviousPage = React.useCallback(() => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  }, [page]);
 
   const onRowsPerPageChange = React.useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setRowsPerPage(Number(e.target.value));
@@ -228,9 +216,6 @@ type Data = typeof data[0];
                 ))}
               </DropdownMenu>
             </Dropdown>
-            {/* <Button color="primary" endContent={<PlusIcon />}>
-              {BtnName}
-            </Button> */}
             {children}
           </div>
         </div>

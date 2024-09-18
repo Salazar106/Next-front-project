@@ -6,26 +6,26 @@ import Modals from "@/app/components/gerenal/modal";
 import { FC, useEffect, useState } from 'react';
 
 interface TableActionButtonsProps {
-    id: any; // O el tipo que corresponda (puede ser string o number)
-    EditComponent: FC<{ id: string }>; // Un componente que acepta la prop id
-    ViewComponent: FC<{ id: string }>; 
+    data: any; // O el tipo que corresponda (puede ser string o number)
+    EditComponent: FC<{ data: any }>; // Un componente que acepta la prop id
+    ViewComponent: FC<{ data: any }>; 
   }
-export default function TableActionButtons({id, EditComponent, ViewComponent}: TableActionButtonsProps) {
+export default function TableActionButtons({data, EditComponent, ViewComponent}: TableActionButtonsProps) {
 
-    const [data, setData] = useState();
+    const [dataState, setDataState] = useState();
     useEffect(() => {
-        setData(id);
-    }, [id]);
+        setDataState(data);
+    }, [data]);
 
     return (
         <div className="flex items-center gap-2 w-[calc(100%-20px)]">
             
-            <Modals title={`Editar ${id.name}`} icon={<FaPen />} size="5xl" isIcon={true}  text="Edit" btnColor="warning">
-                <EditComponent data={data}/>
+            <Modals title={`Editar ${data.name}`} icon={<FaPen />} size="5xl" isIcon={true}  text="Edit" btnColor="warning">
+                <EditComponent data={dataState}/>
             </Modals>
 
-            <Modals title={`Ver ${id.name}`} icon={<FaEye />} size="5xl" isIcon={true} btnColor="primary" text="View">
-                <ViewComponent data={data}/>
+            <Modals title={`Ver ${data.name}`} icon={<FaEye />} size="5xl" isIcon={true} btnColor="primary" text="View">
+                <ViewComponent data={dataState}/>
             </Modals>
                 
             
