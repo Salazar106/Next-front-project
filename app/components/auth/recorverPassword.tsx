@@ -35,14 +35,14 @@ export default function RecoverPasswordForm() {
 
     return (
         <Formik
-        initialValues={{
-            password: '',
-            confirmPassword: '',
-         }}
-        validationSchema={validationSchema}
-            
-        onSubmit={handleSubmit}
-    >
+            initialValues={{
+                password: '',
+                confirmPassword: '',
+            }}
+            validationSchema={validationSchema}
+                
+            onSubmit={handleSubmit}
+        >
             <Form className="w-full px-1 md:px-10">
                     <div className="w-full  flex flex-col justify-center gap-3">
 
