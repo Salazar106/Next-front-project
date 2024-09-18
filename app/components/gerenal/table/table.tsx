@@ -126,7 +126,7 @@ type Data = typeof data[0];
         );
       case "actions":
         return (
-            <TableActionButtons id={data} EditComponent={UserForm} ViewComponent={UserForm}/>
+            <TableActionButtons data={data} EditComponent={UserForm} ViewComponent={UserForm}/>
         );
       default:
         return cellValue;
